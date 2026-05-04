@@ -1,222 +1,308 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشتل رذاذ الضباب — سماد الحياة</title>
-    <!-- دعم الخطوط لجميع المتصفحات -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --fog: #e8f0ec;
-            --mist: #c5d9cc;
-            --deep: #1a2e24;
-            --forest: #234733;
-            --pine: #2e5e42;
-            --fern: #3d7a55;
-            --dew: #6aab7e;
-            --gold: #b8913a;
-            --amber: #d4a843;
-            --cream: #f7f2e8;
-            --white: #fdfcf9;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مشتل رذاذ الضباب — سماد الحياة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fog: #e8f0ec;
+    --mist: #c5d9cc;
+    --deep: #1a2e24;
+    --forest: #234733;
+    --pine: #2e5e42;
+    --fern: #3d7a55;
+    --dew: #6aab7e;
+    --gold: #b8913a;
+    --amber: #d4a843;
+    --cream: #f7f2e8;
+    --white: #fdfcf9;
+  }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 
-        body {
-            background: var(--deep);
-            color: var(--deep);
-            /* دعم خطوط سفاري وأجهزة أبل */
-            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+  body {
+    background: var(--deep);
+    color: var(--deep);
+    /* دعم كامل لمتصفح سفاري وأجهزة أبل */
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
 
-        /* ── HERO ── */
-        .hero {
-            background-color: var(--deep);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 60px 20px;
-        }
+  /* ── HERO ── */
+  .hero {
+    background-color: var(--deep);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 30px;
+  }
 
-        /* Fog & Background animations */
-        .fog-layer { position: absolute; inset: 0; pointer-events: none; }
-        .fog-layer::before {
-            content: ''; position: absolute; bottom: -40px; left: -10%; width: 120%; height: 55%;
-            background: radial-gradient(ellipse at 50% 100%, rgba(197,217,204,0.18) 0%, rgba(197,217,204,0.06) 50%, transparent 70%);
-            border-radius: 50%; animation: fogRise 8s ease-in-out infinite alternate;
-        }
+  .fog-layer { position: absolute; inset: 0; pointer-events: none; }
+  .fog-layer::before {
+    content: ''; position: absolute; bottom: -40px; left: -10%; width: 120%; height: 55%;
+    background: radial-gradient(ellipse at 50% 100%, rgba(197,217,204,0.18) 0%, rgba(197,217,204,0.06) 50%, transparent 70%);
+    border-radius: 50%; animation: fogRise 8s ease-in-out infinite alternate;
+  }
 
-        @keyframes fogRise { from { transform: translateY(10px); opacity: 0.7; } to { transform: translateY(-10px); opacity: 1; } }
+  @keyframes fogRise { from { transform: translateY(10px); opacity: 0.7; } to { transform: translateY(-10px); opacity: 1; } }
 
-        /* تعديل اسم المتجر ليكون سطر واحد ولون فاتح */
-        .hero-brand {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            animation: heroFadeIn 1.2s ease both;
-        }
+  .hero-brand {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: heroFadeIn 1.2s ease both;
+  }
 
-        .brand-arabic {
-            font-size: clamp(32px, 8vw, 70px); /* تصغير القطر قليلاً لضمان سطر واحد */
-            font-weight: 900;
-            color: var(--white); /* لون فاتح */
-            line-height: 1.2;
-            white-space: nowrap; /* يمنع النزول لسطر جديد */
-            margin-bottom: 10px;
-        }
+  @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .brand-arabic span { color: var(--dew); }
+  /* تعديل الاسم ليكون بسطر واحد ولون فاتح */
+  .brand-arabic {
+    font-size: clamp(35px, 8vw, 80px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    white-space: nowrap;
+    margin-bottom: 10px;
+  }
 
-        .brand-latin {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: clamp(14px, 2.5vw, 20px);
-            color: var(--mist);
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            opacity: 0.8;
-        }
+  .brand-arabic span { color: var(--dew); }
 
-        .hero-tagline {
-            font-size: clamp(14px, 2vw, 17px);
-            font-weight: 300;
-            color: rgba(197,217,204,0.8);
-            max-width: 550px;
-            margin: 0 auto 40px;
-        }
+  .brand-latin {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3vw, 22px);
+    color: var(--mist);
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    opacity: 0.7;
+  }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(106,171,126,0.15);
-            border: 1px solid rgba(106,171,126,0.35);
-            border-radius: 40px;
-            padding: 10px 22px;
-            font-size: 13px;
-            color: var(--dew);
-        }
+  .hero-tagline {
+    font-size: clamp(14px, 2vw, 17px);
+    font-weight: 300;
+    color: rgba(197,217,204,0.8);
+    max-width: 480px;
+    line-height: 1.9;
+    margin-bottom: 48px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-        /* ── SECTIONS ── */
-        .quality-section { background: var(--cream); padding: 100px 20px; position: relative; }
-        .section-inner { max-width: 1100px; margin: 0 auto; }
-        .section-title { font-size: clamp(26px, 4vw, 40px); font-weight: 900; text-align: center; margin-bottom: 50px; }
-        
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(106,171,126,0.15);
+    border: 1px solid rgba(106,171,126,0.35);
+    border-radius: 40px;
+    padding: 10px 22px;
+    font-size: 13px;
+    color: var(--dew);
+  }
 
-        .pillar {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: 0.3s;
-        }
-        .pillar:hover { transform: translateY(-10px); }
+  /* ── QUALITY SECTION ── */
+  .quality-section { background: var(--cream); padding: 100px 30px; position: relative; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-label { text-align: center; font-size: 11px; letter-spacing: 5px; color: var(--fern); text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .section-title { text-align: center; font-size: clamp(28px, 5vw, 44px); font-weight: 900; color: var(--deep); margin-bottom: 16px; line-height: 1.2; }
+  .section-title em { font-style: normal; color: var(--fern); }
+  .section-sub { text-align: center; font-size: 15px; color: rgba(26,46,36,0.5); max-width: 500px; margin: 0 auto 70px; line-height: 1.8; }
 
-        /* Animation class */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 80px; }
+  .pillar { background: var(--white); border-radius: 16px; padding: 36px 28px; border: 1px solid rgba(26,46,36,0.07); text-align: center; transition: 0.3s; }
+  .pillar:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,46,36,0.1); }
+  .pillar-icon { font-size: 38px; margin-bottom: 16px; display: block; }
+  .pillar h3 { font-size: 18px; font-weight: 700; color: var(--deep); margin-bottom: 10px; }
+  .pillar p { font-size: 14px; color: rgba(26,46,36,0.55); line-height: 1.8; }
+  .pillar-stat { display: inline-block; margin-top: 16px; background: rgba(61,122,85,0.08); border-radius: 30px; padding: 5px 16px; font-size: 13px; font-weight: 700; color: var(--fern); }
 
-        /* Dew drops style */
-        .drop {
-            position: absolute; border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.6), rgba(197,217,204,0.2));
-        }
+  /* ── JOURNEY ── */
+  .journey-section { background: var(--deep); padding: 100px 30px; position: relative; color: var(--fog); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 70px; }
+  .step { text-align: center; }
+  .step-node { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 2px solid var(--pine); background: rgba(46,94,66,0.4); }
 
-        /* Footer */
-        .brand-footer { background: #12211a; padding: 50px 20px; text-align: center; color: var(--white); }
-        
-        @media (max-width: 600px) {
-            .brand-arabic { font-size: 28px; }
-        }
-    </style>
+  /* ── RESULT STRIP ── */
+  .result-strip { background: linear-gradient(135deg, var(--pine) 0%, var(--forest) 100%); border-radius: 20px; padding: 50px 40px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; border: 1px solid rgba(106,171,126,0.2); margin-top: 50px; }
+  .result-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rnum-val { font-family: 'Cormorant Garamond', serif; font-size: 38px; color: var(--amber); display: block; }
+
+  /* ── BUYER SECTION ── */
+  .buyer-section { background: var(--white); padding: 100px 30px; }
+  .buyer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+  .buyer-card { border-radius: 16px; overflow: hidden; border: 1px solid rgba(26,46,36,0.08); }
+  .buyer-card-header { padding: 28px; background: var(--cream); }
+  .benefit-list { list-style: none; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .benefit-list li::before { content: '✓'; color: var(--fern); margin-left: 10px; font-weight: bold; }
+
+  /* ── FOOTER ── */
+  .brand-footer { background: #0f1a14; padding: 60px 30px; text-align: center; color: var(--white); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 760px) {
+    .result-strip { grid-template-columns: 1fr; text-align: center; }
+    .brand-arabic { font-size: 30px; }
+  }
+</style>
 </head>
 <body>
 
+<!-- HERO -->
 <section class="hero">
-    <div class="fog-layer"></div>
-    <div class="dew-drops" id="dew"></div>
-
-    <div class="hero-brand">
-        <!-- الاسم الآن في سطر واحد وبلون فاتح -->
-        <h1 class="brand-arabic">مشتل <span>رذاذ</span> الضباب</h1>
-        <div class="brand-latin">Rathath Al-Dhabab Nursery</div>
-        <p class="hero-tagline">
-            سماد عضوي حي — ينبثق من قلب الطبيعة الجبلية<br>
-            يُغذّي تربتك من الجذور، لا من السطح
-        </p>
-        <div class="hero-badge">🌿 &nbsp; Vermicompost Premium · عضوي 100%</div>
-    </div>
+  <div class="fog-layer"></div>
+  <div class="hero-brand">
+    <div class="brand-arabic">مشتل <span>رذاذ</span> الضباب</div>
+    <div class="brand-latin">Rathath Al-Dhabab Nursery</div>
+    <p class="hero-tagline">
+      سماد عضوي حي — ينبثق من قلب الطبيعة الجبلية<br>
+      يُغذّي تربتك من الجذور، لا من السطح
+    </p>
+    <div class="hero-badge">🌿 &nbsp; Vermicompost Premium · عضوي 100%</div>
+  </div>
 </section>
 
+<!-- QUALITY PILLARS -->
 <section class="quality-section">
-    <div class="section-inner">
-        <h2 class="section-title reveal">لماذا سمادنا مختلف؟</h2>
-        <div class="pillars">
-            <div class="pillar reveal">
-                <span style="font-size: 40px;">🏔️</span>
-                <h3>بيئة جبلية نقية</h3>
-                <p>يُنتج في قرية بحره بمناخها البارد الرطب — البيئة المثالية لإنتاج سماد أعلى تركيزاً.</p>
-            </div>
-            <div class="pillar reveal">
-                <span style="font-size: 40px;">🪱</span>
-                <h3>أحياء — لا كيماويات</h3>
-                <p>الديدان تُحوّل النفايات إلى سماد حيوي غني بالبكتيريا النافعة والإنزيمات الطبيعية.</p>
-            </div>
-            <div class="pillar reveal">
-                <span style="font-size: 40px;">⚡</span>
-                <h3>امتصاص فوري</h3>
-                <p>العناصر الغذائية متاحة مباشرةً للنبات — لا تحتاج تحلّلاً إضافياً كالسماد التقليدي.</p>
-            </div>
+  <div class="section-inner">
+    <div class="section-label reveal">لماذا سمادنا مختلف</div>
+    <h2 class="section-title reveal">الجودة التي <em>تراها</em> في نباتاتك</h2>
+    <p class="section-sub reveal">ليس كل سماد عضوي متساوٍ — الفرق في المصدر، البيئة، والطريقة</p>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="pillar-icon">🏔️</span>
+        <h3>بيئة جبلية نقية</h3>
+        <p>يُنتج في قرية بحره بمناخها البارد الرطب — البيئة المثالية لنشاط الديدان.</p>
+        <span class="pillar-stat">مناخ طبيعي</span>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-icon">🪱</span>
+        <h3>أحياء — لا كيماويات</h3>
+        <p>الديدان تُحوّل النفايات إلى سماد حيوي غني بالبكتيريا النافعة والإنزيمات.</p>
+        <span class="pillar-stat">ميكروبيوم نشط 100%</span>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-icon">⚡</span>
+        <h3>امتصاص فوري</h3>
+        <p>العناصر الغذائية متاحة مباشرةً للنبات — لا تحتاج تحلّلاً إضافياً.</p>
+        <span class="pillar-stat">5× أسرع</span>
+      </div>
+    </div>
+
+    <!-- COMPARISON BOX -->
+    <div class="reveal" style="background: var(--deep); border-radius: 16px; padding: 40px; color: var(--fog); margin-top: 40px;">
+        <div style="text-align:center; margin-bottom: 32px;">
+          <div style="font-size:13px; letter-spacing:4px; color: var(--dew); margin-bottom:8px;">مقارنة مباشرة</div>
+          <div style="font-size: 22px; font-weight: 900;">رذاذ الضباب مقابل السماد الكيميائي</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+          <div style="background: rgba(61,122,85,0.15); border:1px solid rgba(106,171,126,0.25); border-radius:12px; padding: 24px;">
+            <div style="font-weight:700; color: var(--dew); margin-bottom:15px;">🌿 رذاذ الضباب</div>
+            <ul style="list-style:none; font-size:14px; opacity:0.8;">
+                <li>✓ يُحسّن بنية التربة</li>
+                <li>✓ يزيد الكائنات الحية المفيدة</li>
+                <li>✓ آمن على الجذور</li>
+            </ul>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding: 24px;">
+            <div style="font-weight:700; color: #e05555; margin-bottom:15px;">⚗️ سماد كيميائي</div>
+            <ul style="list-style:none; font-size:14px; opacity:0.6;">
+                <li>✗ يُفقر التربة تدريجياً</li>
+                <li>✗ يقتل الكائنات الدقيقة</li>
+                <li>✗ خطر حرق الجذور</li>
+            </ul>
+          </div>
         </div>
     </div>
+  </div>
 </section>
 
+<!-- JOURNEY -->
+<section class="journey-section">
+  <div class="section-inner">
+    <div class="section-label reveal">رحلة السماد</div>
+    <h2 class="section-title reveal" style="color:white;">من الطبيعة مباشرةً إلى تربتك</h2>
+    
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-node">🍂</div>
+        <h4>مواد طبيعية</h4>
+        <p style="font-size:13px; opacity:0.7;">أوراق جبلية وبقايا عضوية مختارة</p>
+      </div>
+      <div class="step">
+        <div class="step-node">🪱</div>
+        <h4>تحويل بيولوجي</h4>
+        <p style="font-size:13px; opacity:0.7;">الديدان تهضم وتُثري السماد</p>
+      </div>
+      <div class="step">
+        <div class="step-node">📦</div>
+        <h4>جاهز لك</h4>
+        <p style="font-size:13px; opacity:0.7;">يصل إليك حياً ونشطاً</p>
+      </div>
+    </div>
+
+    <div class="result-strip reveal">
+      <div class="result-text">
+        <h3>النتيجة في أرضك</h3>
+        <p style="font-size:14px; opacity:0.7;">نباتات أقوى، جذور أعمق، محصول أوفر</p>
+      </div>
+      <div class="result-nums">
+        <div class="rnum"><span class="rnum-val">5×</span><div style="font-size:11px; opacity:0.6;">نيتروجين أعلى</div></div>
+        <div class="rnum"><span class="rnum-val">100%</span><div style="font-size:11px; opacity:0.6;">عضوي طبيعي</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUYER SECTION -->
+<section class="buyer-section">
+  <div class="section-inner">
+    <h2 class="section-title reveal">مثالي لك، <em>أيّاً كانت</em> أرضك</h2>
+    <div class="buyer-grid">
+      <div class="buyer-card reveal">
+        <div class="buyer-card-header"><h3>🌾 المزارعون</h3></div>
+        <ul class="benefit-list">
+          <li>يُقلّل تكاليف الأسمدة الكيميائية</li>
+          <li>يُحسّن الاحتفاظ بالماء</li>
+        </ul>
+      </div>
+      <div class="buyer-card reveal">
+        <div class="buyer-card-header"><h3>🏡 أصحاب الحدائق</h3></div>
+        <ul class="benefit-list">
+          <li>آمن مع الأطفال والحيوانات</li>
+          <li>لا روائح كريهة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="brand-footer">
-    <div style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">مشتل رذاذ الضباب</div>
-    <p style="opacity: 0.6; font-size: 14px;">جميع الحقوق محفوظة © 2024</p>
+  <div style="font-size: 24px; font-weight: 900; margin-bottom: 10px;">مشتل <span>رذاذ الضباب</span></div>
+  <p style="opacity: 0.5; font-size: 14px;">Where the mountain breathes life into soil</p>
 </footer>
 
 <script>
-    // إنشاء قطرات الندى
-    const dew = document.getElementById('dew');
-    for (let i = 0; i < 15; i++) {
-        const d = document.createElement('div');
-        d.className = 'drop';
-        const size = Math.random() * 8 + 4;
-        d.style.cssText = `
-            width: ${size}px; height: ${size}px;
-            top: ${Math.random() * 100}%; left: ${Math.random() * 100}%;
-            opacity: ${Math.random() * 0.5};
-        `;
-        dew.appendChild(d);
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
     }
-
-    // تأثير الظهور عند التمرير
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
